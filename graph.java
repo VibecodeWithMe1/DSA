@@ -30,3 +30,25 @@ class Solution {
         return ans;
     }
 }
+
+//bfs 
+import java.util.*;
+class Solution {
+    public ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> adj) {
+        // code here
+        ArrayList<Integer> ans = new ArrayList<>();
+        boolean vis[] = new boolean[adj.size()];
+        dfs(0,adj,vis,ans);
+        return ans;
+    }
+    private void dfs(int node,ArrayList<ArrayList<Integer>> adj,boolean vis[],ArrayList<Integer> ans ){
+        vis[node] = true;
+        ans.add(node);
+        
+        for(int neigh:adj.get(node)){
+            if(!vis[neigh]){
+                dfs(neigh,adj,vis,ans);
+            }
+        }
+    }
+}
